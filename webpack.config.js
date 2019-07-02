@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+const CopyWebPackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -16,7 +17,12 @@ module.exports = {
             loaders: 'babel-loader'
         }]
     },
-    plugins: [],
+    plugins: [
+        new CopyWebPackPlugin([{
+            context: './public',
+            from: '*.*'
+        }])
+    ],
     devServer: {
         contentBase: './public',
         host: 'localhost',
